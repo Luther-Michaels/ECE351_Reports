@@ -1,0 +1,146 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        %
+% Luther Michaels        % 
+% ECE 351-52             %
+% Lab 10                 %
+% November 4, 2021       %
+% Frequency Response     % 
+%             Prelab     %
+%                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% DOCUMENT PREAMBLE %%%
+\documentclass[12pt]{report}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newcommand{\adj}{\hspace{0.001em}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeblue}{rgb}{0,0,0.95}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{codeblue},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codegreen},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+
+\title{10}	% Title						
+\author{Luther Michaels}	% Author		
+\date{November 4, 2021}   % Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\lhead{\thetitle}
+\cfoot{\thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TITLE PAGE %%%
+\begin{titlepage}
+	\centering
+	\vspace*{0.5 cm}
+		
+	\begin{center}    
+		\textsc{\Large   ECE 351 - Section \#52}\\[2.0 cm]	
+	\end{center}  
+	\textsc{\Large Frequency Response (Prelab)  }\\[0.5 cm]
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+		\end{flushleft}
+	\end{minipage}~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright} \large
+			\emph{Submitted By:} \\
+			Luther Michaels \break
+				
+			\emph{Submission Date:} \\
+			November 4, 2021
+		\end{flushright}
+	\end{minipage}\\[2 cm]
+\end{titlepage}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% LAB PRELAB %%%
+\renewcommand{\thesection}{\arabic{section}}
+	
+\section{Setup}
+	
+\begin{center}
+	\includegraphics[scale = 0.4]{Prelab 10/RLC Circuit.png}\\[1.0 cm]
+	$ R = 1 k\Omega, L = 27 mH, C = 100 nF $
+\end{center}
+\begin{equation*}
+	H(s) = \frac{\frac{1}{RC}s}{s^2 + \frac{1}{RC}s + \frac{1}{LC}}
+\end{equation*} \\
+	
+\section{Find $ |H(j\omega)| $ and $ \angle H(j\omega) $}
+
+\begin{equation*}
+	H(j\omega) = \frac{a_1 + jb_1}{a_2 + jb_2}
+\end{equation*}
+\begin{equation*}
+	|H(j\omega)| = \frac{\sqrt{a_1\adj^2 + b_1\adj^2}}{\sqrt{a_2\adj^2 + b_2\adj^2}}
+\end{equation*}
+\begin{equation*}
+	\angle H(jw) = -tan^{-1}(\frac{b_1}{a_1}) - tan^{-1}(\frac{b_2}{a_2})
+\end{equation*}
+
+\begin{align*}
+	H(j\omega) &= \frac{\frac{1}{RC}j\omega}{(j\omega)^2 + \frac{1}{RC}j\omega + \frac{1}{LC}} \\
+	&= \frac{j\frac{1}{RC}\omega}{(-\omega^2 + \frac{1}{LC}) + j\frac{1}{RC}\omega}
+\end{align*}
+\begin{align*}
+	|H(j\omega)| &= \frac{\sqrt{(0)\adj^2 + (\frac{1}{RC}\omega)^2}}{\sqrt{(-\omega^2 + \frac{1}{LC})^2 + (\frac{1}{RC}\omega)^2}} \\
+	&= \frac{\frac{1}{RC}\omega}{\sqrt{\omega^4 + \omega^2(\frac{1}{R^2C^2} - \frac{2}{LC}) + \frac{1}{L^2C^2}}}
+\end{align*}
+\begin{align*}
+	\angle H(jw) &= -tan^{-1}(\frac{\frac{1}{RC}\omega}{0}) - tan^{-1}(\frac{\frac{1}{RC}\omega}{-\omega^2 + \frac{1}{LC}}) \\
+	&= -90^\circ - tan^{-1}(\frac{\frac{1}{RC}\omega}{-\omega^2 + \frac{1}{LC}})
+\end{align*}
+
+\end{document}
+
+% Lab Report based on template created by Roza Aceska.
